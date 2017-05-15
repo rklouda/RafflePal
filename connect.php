@@ -5,7 +5,7 @@
 
     $servername = getenv('IP');
     $username = getenv('C9_USER');
-    $password = "12345678";
+    $password = "";
     $database = "Agent";
     $dbport = 3306;
 
@@ -16,7 +16,8 @@
     if ($db->connect_error) {
         die("Connection failed: " . $db->connect_error);
     } 
-    echo '<script language="javascript">';
-echo 'alertConnected successfully (".$db->host_info.")';
-//    echo "Connected successfully (".$db->host_info.")";
-    echo '</script>';
+//    echo '<script language="javascript">';
+//echo 'alertConnected successfully (".$db->host_info.")';
+//   echo "Connected successfully (".$db->host_info.")";
+//    echo '</script>';
+?>

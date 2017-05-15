@@ -1,0 +1,145 @@
+    
+ <div id="wrapper">
+<div class="container">
+    <div class="col-md-6">
+     <div class="page-header">
+     <h3>Add Clients </h3>
+     </div>
+     
+ <div id="login-form">
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
+               <?php
+   if ( isset($errMSG) ) {
+    
+    ?>
+    <div class="form-group">
+             <div class="alert alert-<?php echo ($errTyp=="success") ? "success" : $errTyp; ?>">
+    <span class="glyphicon glyphicon-info-sign"></span> <?php echo $errMSG; ?>
+                </div>
+             </div>
+                <?php
+   }
+   ?>
+     
+            
+            <div class="form-group">
+             <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+             <input type="text" name="First_Name" class="form-control" placeholder="Enter your First Name" maxlength="50" required="true" value="<?php echo $First_Name ?>" />
+                </div>
+                <span class="text-danger"><?php echo $First_NameError; ?></span>
+            </div>
+            
+            
+            
+            <div class="form-group">
+             <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+             <input type="text" name="Last_Name" class="form-control" placeholder="Enter Your Last Name" maxlength="40" value="<?php echo $Last_Name ?>" />
+                </div>
+                <span class="text-danger"><?php echo $Last_NameError; ?></span>
+            </div>
+            
+            
+            <div class="form-group">
+             <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+             <input type="text" name="Street" class="form-control" placeholder="Enter Your Street Address" maxlength="40" value="<?php echo $Street ?>" />
+                </div>
+                <span class="text-danger"><?php echo $StreetError; ?></span>
+            </div>
+            
+            
+            
+              <div class="form-group">
+             <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+             <input type="text" name="Phone_Number" class="form-control" placeholder="Enter Your Phone Number" maxlength="40" value="<?php echo $Phone_Number ?>" />
+                </div>
+                <span class="text-danger"><?php echo $Phone_NumberError; ?></span>
+            </div>
+            
+            
+              <div class="form-group">
+             <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-city"></span></span>
+             <input type="text" name="City" class="form-control" placeholder="Enter Your City" maxlength="40" value="<?php echo $City ?>" />
+                </div>
+                <span class="text-danger"><?php echo $CityError; ?></span>
+            </div>
+            
+               <div class="form-group">
+             <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-state"></span></span>
+             <input type="text" name="State" class="form-control" placeholder="Enter Your State" maxlength="40" value="<?php echo $State ?>" />
+                </div>
+                <span class="text-danger"><?php echo $StateError; ?></span>
+            </div>
+            
+              <div class="form-group">
+             <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-number"></span></span>
+             <input type="text" name="Social_Security_Number" class="form-control" placeholder="Enter Your Social Security Number" maxlength="40" value="<?php echo $Social_Security_Number ?>" />
+                </div>
+                <span class="text-danger"><?php echo $Social_Security_NumberError; ?></span>
+            </div>
+            
+            
+             <div class="form-group">
+             <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+             <input type="text" name="Date" class="form-control" placeholder="Date" maxlength="40" value="<?php echo $Date ?>" />
+                </div>
+                <span class="text-danger"><?php echo $StateError; ?></span>
+            </div>
+            
+            
+            
+            <div class="form-group">
+             <hr />
+            </div>
+            
+            <div class="form-group">
+             <button type="submit" class="btn btn-block btn-primary" name="btn-save">Submit</button>
+            </div>
+            
+        </div>
+   
+    </form>
+    </div> 
+    
+</div>
+
+
+
+
+
+   <div id="wrapper">
+
+ <div class="container">
+    <div class="col-md-6">
+     <div class="page-header"> 
+    
+     <h3>Client List for Agent:   <?php echo $userRow['First_Name']; ?> </h3>
+      <?php
+
+            $results = mysqli_query($db,"SELECT `First_Name` FROM `CLIENT` WHERE Agent_ID =$userRow[Agent_ID]");
+            while($row = mysqli_fetch_array($results)) {
+            ?>
+               <div class="list-group">
+ <a href="#" data-toggle="modal" data-target="#myModal" class="list-group-item"><?php echo $row['First_Name']?></a>
+      
+            <?php
+            }
+            ?>
+
+     </div>
+      
+
+    
+function deleteRecord(){
+var className = "Application";
+var _id = $this.text().substring(0,10);
+$results = mysqli_query($db,""DELETE FROM `Agent`.`CLIENT` WHERE `CLIENT`.`Client_ID` =_id");
+
+}
